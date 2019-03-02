@@ -14,12 +14,25 @@ The Features of this dataset are:
 Happy coding."""
 
 # Step 0: import the necessary libraries: pandas, matplotlib.pyplot, and numpy.
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
 # Step 1: load your dataset using pandas
+data = pd.read_csv('D:\Learn\SelfLearn\ML\Practise\data-preprocessing-HouariZegai\Social_Network_Ads.csv')
+X = data.iloc[:, :4]
+y = data.iloc[:,4]
 
 # Step 2: Handle Missing data if they exist.
+from sklearn.preprocessing import Imputer
+im = Imputer()
+X[:, 1:4] = im.fit_transform(X[:, 1:4])
 
 # Step 3: Encode the categorical variables.
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+lbl_x = LabelEncoder()
+y = lbl_x.fit_transform(y)
+
 
 # Step 4: Do Feature Scaling if necessary.
 
